@@ -3,12 +3,15 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 import json
+from pathlib import Path
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
-# Specify the path to your CSV file
-csv_file_path = 'C:/Users/squir/Downloads/archive/melee_player_database/sets.csv'
-csv_file_path_clean = 'C:/Users/squir/Downloads/archive/melee_player_database/sets_cleaned.csv'
-csv_file_path_clean_num = 'C:/Users/squir/Downloads/archive/melee_player_database/sets_cleaned_num.csv'
+# CSV paths, resolved relative to this file so the script runs from any directory.
+# See the README for how to unpack sets_cleaned.zip into data/.
+data_dir = Path(__file__).resolve().parent.parent / 'data'
+csv_file_path = data_dir / 'sets.csv'
+csv_file_path_clean = data_dir / 'sets_cleaned.csv'
+csv_file_path_clean_num = data_dir / 'sets_cleaned_num.csv'
 # Read the CSV file into a DataFrame
 df = pd.read_csv(csv_file_path)
 df=df[df['game_data'] != '[]']

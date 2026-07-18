@@ -23,10 +23,13 @@ from sklearn.ensemble import AdaBoostClassifier
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.utils import to_categorical
-# Specify the path to your CSV file
-csv_file_path = 'C:/Users/squir/Downloads/archive/melee_player_database/sets.csv'
-csv_file_path_clean = 'C:/Users/squir/Downloads/archive/melee_player_database/sets_cleaned.csv'
-csv_file_path_clean_num = 'C:/Users/squir/Downloads/archive/melee_player_database/sets_cleaned_num.csv'
+from pathlib import Path
+# CSV paths, resolved relative to this file so the script runs from any directory.
+# See the README for how to unpack sets_cleaned.zip into data/.
+data_dir = Path(__file__).resolve().parent.parent / 'data'
+csv_file_path = data_dir / 'sets.csv'
+csv_file_path_clean = data_dir / 'sets_cleaned.csv'
+csv_file_path_clean_num = data_dir / 'sets_cleaned_num.csv'
 # Display the modified dataframe
 df = pd.read_csv(csv_file_path_clean)
 print(df[df.isna().any(axis=1)]) # shows NaN values in data frame if it exists

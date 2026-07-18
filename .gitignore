@@ -1,0 +1,6 @@
+# Dataset, unpacked from sets_cleaned.zip (~588 MB)
+data/
+
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
